@@ -1,0 +1,2 @@
+# FrameAction.js
+game method
