@@ -1,34 +1,34 @@
 ﻿function KeyInfo(){
-  this.key_info = {};
-  this.key_count = {};
+  this.keyInfo = {};
+  this.keyCount = {};
   
-  var key_info = this.key_info;
+  var keyInfo = this.keyInfo;
   document.addEventListener('keydown', function(e){
-    key_info[e.key] = true;
+    keyInfo[e.key] = true;
     //console.log(['push', e.key]);
   });
   
   document.addEventListener('keyup', function(e){
-    key_info[e.key] = false;
+    keyInfo[e.key] = false;
     //console.log(['release', e.key]);
   });
 }
 
 KeyInfo.prototype.updateKeyCount = function(key){
-  if(this.key_info[key]) this.key_count[key] = this.getKeyCount(key) + 1;
-  else                   this.key_count[key] = 0;
+  if(this.keyInfo[key]) this.keyCount[key] = this.getKeyCount(key) + 1;
+  else                  this.keyCount[key] = 0;
 };
 
 KeyInfo.prototype.updateKeyCounts = function(){
-  for(var key in this.key_info){
+  for(var key in this.keyInfo){
     this.updateKeyCount(key);
   }
 };
 
-KeyInfo.prototype.getKeyInfo = function(key_code){
-  return this.key_info[key_code];
+KeyInfo.prototype.getKeyInfo = function(keyCode){
+  return this.keyInfo[keyCode];
 };
 
-KeyInfo.prototype.getKeyCount = function(key_code){
-  return this.key_count[key_code] || 0;
+KeyInfo.prototype.getKeyCount = function(keyCode){
+  return this.keyCount[keyCode] || 0;
 };
